@@ -7,7 +7,6 @@ def test_dark_theme_by_time():
     времени.
     """
     current_time = time(hour=23)
-    is_dark_theme = None
 
     if time(hour=6) <= current_time < time(hour=22):
         is_dark_theme = False
@@ -96,6 +95,7 @@ def test_readable_function():
 def print_function_name_and_args(function_name, *args):
     func_name = function_name.__name__.replace("_", " ").title()
     text = ", ".join([arg for arg in args])
+    print(f'\n{func_name} [{text}]')
     return f'{func_name} [{text}]'
 
 
