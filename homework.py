@@ -26,16 +26,18 @@ def test_dark_theme_by_time_and_user_choice():
     переключение по времени системы)
     """
     current_time = time(hour=23)
-    dark_theme_enabled_by_user = False
+    dark_theme_enabled_by_user = None
     is_dark_theme = None
 
     if dark_theme_enabled_by_user:
         is_dark_theme = True
-    else:
+    elif dark_theme_enabled_by_user is None:
         if time(hour=6) <= current_time < time(hour=22):
             is_dark_theme = False
         else:
             is_dark_theme = True
+    else:
+        is_dark_theme = False
 
     assert is_dark_theme is True
 
@@ -93,7 +95,7 @@ def test_readable_function():
 def print_function_name_and_args(function_name, *args):
     func_name = function_name.__name__.replace("_", " ").title()
     text = ", ".join([arg for arg in args])
-    print(f'\n{func_name} [{text}]')
+    print(f'{func_name} [{text}]')
     return f'{func_name} [{text}]'
 
 
